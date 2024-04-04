@@ -1,6 +1,7 @@
 package pageobjects;
 
 import SanjeevAcademy.AbstractComponents.AbstractComponents;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,14 +18,15 @@ public class CartPage extends AbstractComponents {
         this.driver=driver;
         PageFactory.initElements(driver,this);
 
-
     }
 
     @FindBy(css = ".cartSection h3")
-    private  List<WebElement> cartProducts;
+    List<WebElement> cartProducts;
 
     @FindBy(css = ".totalRow button")
     WebElement checkoutEle;
+
+    By checkOut = By.cssSelector(".totalRow button");
 
     public Boolean VerifyProductDisplay(String productName)
     {
@@ -36,14 +38,10 @@ public class CartPage extends AbstractComponents {
 
     public CheckoutPage goTOCheckout()
     {
+        //waitForElementToAppear(checkOut);
+        windowScroll();
         checkoutEle.click();
         return new CheckoutPage(driver);
-//        return new CheckoutPage(driver);
-//        return new CheckoutPage(driver);
-//        return new CheckoutPage(driver);
-//        return new CheckoutPage(driver);
-
-
     }
 }
 

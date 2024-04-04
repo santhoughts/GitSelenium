@@ -1,6 +1,7 @@
 package SanjeevAcademy.AbstractComponents;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,7 +37,7 @@ public class AbstractComponents {
         wait.until(ExpectedConditions.visibilityOfElementLocated(FindBy));
     }
 
-    public void waitForWebElementToAppear(WebElement FindBy)
+    public void WaitForWebElementToAppear(WebElement FindBy)
     {
         // Reusable code is write in the abstacatComponent Class
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -65,5 +66,11 @@ public class AbstractComponents {
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.invisibilityOf(ele));
+    }
+
+    public void windowScroll()
+    {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,50000)");
     }
 }

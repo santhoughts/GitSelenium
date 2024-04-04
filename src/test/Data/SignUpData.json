@@ -1,0 +1,21 @@
+[
+  {
+    "firstName" : "MD Babu" ,
+    "lastName" : "Kausar",
+    "email" : "sajhhh@gmail.com",
+    "mobileNo" : "9898989890",
+    "password" : "Amit@123",
+    "confirmPassword" : "Amit@123"
+  } ,
+
+
+  {
+    "firstName" : "Abhishek" ,
+    "lastName" : "Kumar",
+    "email" : "abhi@gmail.com",
+    "mobileNo" : "9890089890",
+    "password" : "mit@123",
+    "confirmPassword" : "Amit@123"
+
+  }
+]
