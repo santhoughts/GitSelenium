@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
 
+<!-- for smoke testing -->
+<suite parallel="tests" name="All Test Suite">
 
-    <test thread-count="5" name="Submit Order Test">
+    <!-- Listeners class -->
+    <listeners>
+        <listener class-name="TestComponents.Listeners"/>
+    </listeners>
+
+    <test name="SmokeTesting">
         <classes>
             <class name="sanjeevAcademy.tests.SubmitOrderTest"/>
         </classes>
-    </test> <!-- Test -->
-
-    <test thread-count="5" name="Error Validations Test">
+    </test>
+    
+    <test name="LoginErrorValidations">
         <classes>
             <class name="sanjeevAcademy.tests.ErrorValidationsTest"/>
         </classes>

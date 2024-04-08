@@ -11,7 +11,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobjects.CartPage;
 import pageobjects.OrderPage;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.List;
 
 public class AbstractComponents {
 
@@ -32,14 +37,14 @@ public class AbstractComponents {
 
     public void waitForElementToAppear(By FindBy)
     {
-        // Reusable code is write in the abstacatComponent Class
+        // Reusable code is write in the abstractComponent Class
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(FindBy));
     }
 
     public void WaitForWebElementToAppear(WebElement FindBy)
     {
-        // Reusable code is write in the abstacatComponent Class
+        // Reusable code is write in the abstractComponent Class
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(FindBy));
     }
@@ -71,6 +76,41 @@ public class AbstractComponents {
     public void windowScroll()
     {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,50000)");
+        js.executeScript("window.scrollBy(0,1000)");
     }
+
+    // Footer link count
+
+    @FindBy(css = "li[class='gf-li'] a")
+    List<WebElement> numberOfLink;
+
+    // get number of link
+    public List<WebElement> getFooterLink()
+    {
+      return  numberOfLink;
+    }
+
+    public int getResponseCodeOfEachLink(WebElement link1) throws IOException {
+       Iterator var5 = numberOfLink.iterator();
+       while (var5.hasNext())
+       {
+           windowScroll();
+           WebElement link = (WebElement)var5.next();
+           String url =link.getAttribute("href");
+           HttpURLConnection conn = (HttpURLConnection)(new URL(url)).openConnection();
+           conn.setRequestMethod("HEAD");
+           conn.connect();
+           int respCode = conn.getResponseCode();
+
+
+           return respCode;
+
+
+       }
+
+        return 0;
+    }
+
+
+
 }

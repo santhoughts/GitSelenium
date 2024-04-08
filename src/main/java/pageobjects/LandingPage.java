@@ -49,6 +49,14 @@ public class LandingPage extends AbstractComponents {
         return productCatalouge;
     }
 
+    public LandingPage clearUserEmailsAndPasswordField()
+    {
+        userEmails.clear();
+        password.clear();
+        LandingPage landingPage = new LandingPage(driver);
+        return landingPage;
+    }
+
     public String getErrorMessage()
     {
         WaitForWebElementToAppear(errorMessage);
@@ -59,6 +67,7 @@ public class LandingPage extends AbstractComponents {
     public void goTo()
     {
         driver.get("https://rahulshettyacademy.com/client");
+        //driver.get("https://rahulshettyacademy.com/AutomationPractice/");
 
     }
 

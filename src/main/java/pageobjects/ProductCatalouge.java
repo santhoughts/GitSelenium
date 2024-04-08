@@ -36,6 +36,7 @@ public class ProductCatalouge extends AbstractComponents {
     By productsBy = By.cssSelector(".mb-3");
     By addToCart =By.cssSelector(".card-body button:last-of-type");
     By toastMessage = By.cssSelector("#toast-container");
+    By productNameElement = By.cssSelector("b");
 
     // Action Methods
 
@@ -48,7 +49,7 @@ public class ProductCatalouge extends AbstractComponents {
     public WebElement getProductByName(String productName)
     {
         WebElement prod = getProductList().stream().filter(product ->
-                        product.findElement(By.cssSelector("b")).getText().equals(productName))
+                        product.findElement(productNameElement).getText().equals(productName))
                 .findFirst().orElse(null);
         return prod;
     }
